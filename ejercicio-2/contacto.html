@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto — Karina Morales</title>
+  <meta name="description" content="Formulario de contacto de Karina Andrea Morales Padilla." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS principal (raíz del proyecto) -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Estilos internos mínimos para formulario -->
+  <style>
+    .form { display:grid; gap:14px; }
+    .field { display:grid; gap:6px; }
+    .field label {
+      font-size:14px; font-weight:700; color:var(--azul);
+      letter-spacing:.2px;
+    }
+    .field input, .field textarea {
+      font:inherit; color:var(--texto);
+      padding:12px 14px; border-radius:12px;
+      border:1px solid var(--borde); background:#fff;
+      box-shadow:0 2px 10px rgba(18,29,56,.04) inset;
+    }
+    .field textarea { min-height:140px; resize:vertical; }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; }
+    .btn {
+      appearance:none; border:none; cursor:pointer;
+      padding:12px 18px; border-radius:14px; font-weight:800;
+      background:var(--dorado); color:#1a2438;
+      box-shadow:0 6px 16px rgba(255,184,28,.25);
+      transition: background .2s ease, transform .1s ease;
+    }
+    .btn:hover { background:#ffd45a; transform:translateY(-1px); }
+    .btn.secondary {
+      background:#fff; border:1px solid var(--borde);
+      box-shadow:0 6px 16px rgba(18,29,56,.05);
+    }
+    .hint { font-size:12px; color:#5d6b86; }
+  </style>
+</head>
+
+<body>
+  <!-- Enlace de salto -->
+  <a href="#contenido" class="sr-only">Saltar al contenido</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="wrap" style="gap:0; padding-bottom:16px; padding-top:16px;">
+      <h1 class="logo titulo" style="font-size:clamp(20px,2vw,24px); margin:0; color:var(--dorado);">
+        KM · Diseño desde el Código
+      </h1>
+      <nav class="menu" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="contacto.html" aria-current="page">Contacto</a>
+      </nav>
+    </div>
+    <div class="divider" aria-hidden="true"></div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="contenido" class="wrap" role="main">
+    <section class="card" aria-labelledby="s_contacto">
+      <header class="card__header"><h2 id="s_contacto" class="titulo">Contacto</h2></header>
+      <div class="card__body">
+        <p>¿Hablamos? Déjame un mensaje y te respondo.</p>
+
+        <!-- FORMULARIO -->
+        <form class="form" aria-label="Formulario de contacto" onsubmit="handleSubmit(event)">
+          <div class="field">
+            <label for="name">Nombre</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+            <span class="hint">Usa un correo válido para poder responderte.</span>
+          </div>
+
+          <div class="field">
+            <label for="msg">Mensaje</label>
+            <textarea id="msg" name="message" required></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn" type="submit">Enviar</button>
+            <button class="btn secondary" type="reset">Limpiar</button>
+          </div>
+        </form>
+
+        <p class="hint" style="margin-top:10px;">
+          También puedes visitar mi sitio estudiantil:
+          <a class="link-casiopea" href="https://wiki.ead.pucv.cl/Karina_Morales" target="_blank" rel="noopener">Casiopea ↗</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap" style="gap:0; padding-top:12px;">
+      © <span id="y"></span> Karina Andrea Morales Padilla ·
+      <a href="mailto:karina@example.com">karina@example.com</a>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Año automático en el footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Marcar link activo
+    const here = location.pathname.split('/').pop() || 'contacto.html';
+    document.querySelectorAll('.menu a').forEach(a => {
+      if (a.getAttribute('href') === here) a.setAttribute('aria-current','page');
+    });
+
+    // Simulación de envío sin backend
+    function handleSubmit(e) {
+      e.preventDefault();
+      const data = new FormData(e.target);
+      const nombre = data.get('name');
+      const correo = data.get('email');
+      const mensaje = data.get('message');
+      alert(`Gracias, ${nombre}. Te responderé a ${correo}.\n\nMensaje:\n${mensaje}`);
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

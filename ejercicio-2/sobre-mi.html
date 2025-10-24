@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sobre mí — Karina Morales</title>
+  <meta name="description" content="Biografía y enfoque de diseño de Karina Andrea Morales Padilla." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS correcto según tu carpeta (raíz) -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Enlace de salto para accesibilidad -->
+  <a href="#contenido" class="sr-only">Saltar al contenido</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap" style="gap:0; padding-bottom:16px; padding-top:16px;">
+      <h1 class="logo titulo" style="font-size:clamp(20px,2vw,24px); margin:0; color:var(--dorado);">
+        KM · Diseño desde el Código
+      </h1>
+      <nav class="menu" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="sobre-mi.html" aria-current="page">Sobre mí</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+    <div class="divider" aria-hidden="true"></div>
+  </header>
+
+  <main id="contenido" class="wrap" role="main">
+    <section class="card" aria-labelledby="s_bio">
+      <header class="card__header"><h2 id="s_bio" class="titulo">Biografía</h2></header>
+      <div class="card__body">
+        <p>
+          Soy <strong>Karina Andrea Morales Padilla</strong>, estudiante de Diseño en la PUCV desde 2022.
+          Mi formación se orienta a lo gráfico y la interacción, con interés en la edición, la comunicación visual y
+          los sistemas de información. Proyecto mi oficio hacia el <em>tatuaje profesional</em>, integrando composición,
+          tipografía y narrativa visual en el cuerpo.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="s_enfoque">
+      <header class="card__header"><h2 id="s_enfoque" class="titulo">Enfoque</h2></header>
+      <div class="card__body">
+        <p>
+          Concibo el diseño como herramienta de comunicación y experiencia.
+          Me interesa el cruce entre rigor tipográfico, retículas claras y decisiones visuales que favorezcan la lectura
+          y accesibilidad. Exploro herramientas digitales (HTML/CSS/JS) para prototipar interfaces que comuniquen con claridad.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="s_formacion">
+      <header class="card__header"><h2 id="s_formacion" class="titulo">Formación (selección)</h2></header>
+      <div class="card__body">
+        <div class="year">2025</div>
+        <ul class="list">
+          <li>Diseño desde el Código</li>
+          <li>Taller de Algoritmos Cinéticos</li>
+        </ul>
+
+        <div class="year">2024</div>
+        <ul class="list">
+          <li>Imagen Escrita</li>
+          <li>Taller de Diseño de Interacción</li>
+          <li>Taller de Ediciones Digitales</li>
+        </ul>
+
+        <div class="year">2023</div>
+        <ul class="list">
+          <li>Lenguaje y Representación – Diseño</li>
+          <li>Producción Gráfica</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="s_travesias">
+      <header class="card__header"><h2 id="s_travesias" class="titulo">Travesías</h2></header>
+      <div class="card__body">
+        <div class="timeline">
+          <div class="t-item"><div class="when">2024</div><div class="what"><strong>San Fabián de Alico</strong></div></div>
+          <div class="t-item"><div class="when">2023</div><div class="what"><strong>Pullally</strong></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap" style="gap:0; padding-top:12px;">
+      © <span id="y"></span> Karina Andrea Morales Padilla ·
+      <a href="mailto:karina@example.com">karina@example.com</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const here = location.pathname.split('/').pop() || 'sobre-mi.html';
+    document.querySelectorAll('.menu a').forEach(a => {
+      if (a.getAttribute('href') === here) a.setAttribute('aria-current','page');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Inicio | Karina Morales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css?v=5">
+</head>
+<body>
+  <a href="#contenido" class="sr-only">Saltar al contenido</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap" style="gap:0; padding:16px 20px;">
+      <h1 class="logo titulo" style="font-size:clamp(20px,2vw,24px); margin:0; color:var(--dorado);">
+        KM · Diseño desde el Código
+      </h1>
+      <nav class="menu" aria-label="Menú principal">
+        <a href="index.html" aria-current="page">Inicio</a>
+        <a href="sobre-mi.html">Sobre mí</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+    <div class="divider" aria-hidden="true"></div>
+  </header>
+
+  <main id="contenido" class="wrap" role="main">
+    <section class="card intro" aria-labelledby="s_intro">
+      <header class="card__header">
+        <h1 id="s_intro" class="titulo">¡Hola, soy Karina! 👋</h1>
+      </header>
+      <div class="divider" aria-hidden="true"></div>
+
+      <div class="card__body">
+        <figure class="intro-media">
+          <img src="imagenes/imagenpresentacion.jpeg" alt="Retrato de Karina" loading="lazy">
+        </figure>
+
+        <p class="intro-text">
+          Soy Karina Andrea Morales Padilla, estudiante de Diseño en la Pontificia Universidad Católica de Valparaíso (PUCV) desde 2022.
+          Nací en Rancagua y crecí en Machalí, en la Región del Libertador Bernardo O’Higgins.
+          Compagino mis estudios con mi trabajo en Tomy Beans, un local de comida rápida que me ayuda a financiar mi formación.
+          Mi interés principal está en lo gráfico y la interacción, y proyecto mi carrera hacia el tatuaje profesional,
+          integrando criterios de diseño, composición y narrativa visual en la piel.
+        </p>
+      </div>
+    </section>
+
+    <!-- …resto de secciones igual que antes… -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap" style="gap:0; padding-top:12px;">
+      © <span id="y"></span> Karina Andrea Morales Padilla ·
+      <a href="mailto:karina@example.com">karina@example.com</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const here = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.menu a').forEach(a => {
+      if (a.getAttribute('href') === here) a.setAttribute('aria-current','page');
+    });
+  </script>
+</body>
+</html>
